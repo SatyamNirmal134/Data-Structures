@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<stdlib.h> 
+int Linear(int a[],int b,int search)
+{
+    int flag;
+    for(int i=0;i<b;i++)
+    {
+        if(a[i]==search)
+        {
+         printf("Number found at %d index of array\n",i); 
+         flag=1;
+         
+        }
+    }
+    if(flag!=1)
+    {
+       
+    printf("Number not found!\n");
+    }
+}
+int Binary()
+{ 
+    
+}
+int main()
+{
+    int a[100],b,search,ch;
+    printf("Which search you want to perform?\n 1.Linear search \n 2.Binary search ");
+    scanf("%d",&ch);
+    switch(ch)
+   {
+       
+    
+    case 1:
+    {
+    printf("Linear search\n");
+    printf("Enter the size of array:-");
+    scanf("%d",&b);
+    
+    for(int i=0;i<b;i++)
+    {
+        printf("Enter %d th element of array",i+1);
+        scanf("%d",&a[i]);
+    }
+    printf("Enter element to search");
+    scanf("%d",&search);
+    Linear(a,b,search);
+    break;
+    }
+    case 2:
+    {
+    printf("Binary search");
+    printf("Please enter sorted data\n");
+    printf("Enter the size of array:-");
+    scanf("%d",&b);
+    
+    for(int i=0;i<b;i++)
+    {
+        printf("Enter %d th element of array",i+1);
+        scanf("%d",&a[i]);
+    }
+    printf("Enter element to search");
+    scanf("%d",&search);
+    Binary(a,b,search);
+    break;
+    }
+   }
+   
+    return 0;
+}
+
+
