@@ -1,0 +1,112 @@
+#include<stdio.h>
+int stack[100],ch,n,top,a;
+void push(void);
+void pop(void);
+int peek(void);
+void display(void);
+int main()
+{
+    top=-1;
+    printf("Enter the size of stack[max size is 100]-");
+    scanf("%d",&n);
+    do
+    {
+        printf("Which operation do you want to perform? \n 1.Push \n2.Pop \n3.Peek \n4.display \n5.Exit");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:
+                   push();
+                   break;
+            
+            case 2:
+                  pop();
+                  break;
+                  
+            case 3:
+                   peek();
+                   break;
+            
+            case 4:
+                   display();
+                   break;
+            
+            case 5: 
+                   printf("Exit Point");
+                   break;
+            
+            default :
+                     printf("Please enter the number from 1 to 5");
+                   
+        }
+    }
+    while(ch!=4);
+     return 0;
+}
+void push()
+{
+    
+     if(top>=n-1)
+     {
+         printf("Stack is overflow!\n");
+     }
+     else
+     {
+         printf("Enter the element do you want to push-");
+         scanf("%d",&a); 
+         top++;
+         stack[top]=a;
+         
+     }
+}
+void pop()
+{
+    if(top<=-1)
+    {
+        printf("Stack if underflow!\n");
+    }
+    else
+     {
+         printf("The element is %d ",stack[top]);
+         top--;
+      }
+        
+}
+int  peek()
+{
+    return stack[top];
+    
+}
+void display()
+{
+     printf("Stack is ");
+     for (int i=top;i>=0;i--)
+   {
+      printf("%d \n",stack[i]);
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
