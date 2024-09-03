@@ -2,7 +2,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <malloc.h>
-#define size 5
+#define size 5  
 
 // Define node structure
 typedef struct node
