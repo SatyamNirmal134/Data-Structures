@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+    int data;
+    struct node* next;
+}
+void create()
+{
+  struct node* temp;
+  temp=(struct node*)malloc(sizeof(struct node));
+  printf("Enter node data:");
+  scanf("%d",&temp->data);
+  temp->next=NULL;
+  if(head==NULL)
+  {
+      head=temp;
+  }
+  else
+  {
+      struct node*ptr=head;
+      while(ptr->next!=NULL)
+      {
+          ptr=ptr->next;
+      }
+      ptr->next=temp;
+  }
+}
+void display()
+{
+  if(head=NULL)
+  {
+     printf("Linked list is Empty!!!!");
+     return;
+  }
+  struct node* ptr=head;
+  printf("Linked list:");
+  while(ptr!=NULL)
+  {
+      printf("%d",ptr->data);
+      ptr=ptr->next;
+  }
+  printf("\n");
+}
