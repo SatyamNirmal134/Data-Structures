@@ -1,0 +1,86 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define MAX 100
+char stack[MAX];
+int top;
+
+void push(char item)
+{
+   if(top== MAX-1)
+   {
+       printf("Stack is overflow\n");
+   }
+   else
+   {
+       top=top+1;
+       stack[top]=item;
+   }
+}
+ 
+int pop()
+{
+   if(top==-1)
+   {
+       printf("Stack is empty \n");
+   }
+   else
+   {
+       top--;
+   }
+}
+int checkpair(char v1,char v2)
+{
+    if((v1=='(' && v2==')')||(v1=='[' && v2==']')||(v1=='{' && v2=='}'))
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+int balanced(char str[])
+{
+   for(int i=0;i<strlen(str);i++)
+   {
+     if(str[i]=='('||str[i]=='['||str[i]=='{')
+     {
+         push(str[i]);
+     }
+     else 
+     {
+         if(top==-1)
+         {
+            return 0; 
+         }
+         else if(checkpair(pop(),str[i]))
+        {
+        return 0;
+        }
+        
+     }
+   }
+   if(top==-1)
+   {
+       return 1;
+   }
+   else 
+   {
+       return 0;
+   }
+}
+int main()
+{
+    
+   // char exp[MAX]="({})[]{}";
+   char  exp[MAX];
+    printf("Enter expression with paraenthesis-");
+    scanf("%s", exp);
+    int i=0;
+    top=-1;
+    int len;
+
+    balanced(exp)?printf("String is Balanced"):printf("String is not balanced");
+    return 0;
+}
