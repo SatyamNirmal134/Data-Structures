@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+# define size=100
+int front,rear,queue[size];
+int main()
+{
+    int ch;
+    printf("Menu for doing operations on Queue-");
+    printf("\n1.Inserting element\n2.Deleting element\n3.Display queue\n4.exit");
+    scanf("%d",&ch);
+    switch(ch):
+    {
+        case 1:enqueue();
+               break;
+        case 2:dequeue();
+               break;
+        case 3:display();
+               break;
+        case 4:exit(0);        
+    }
+    return 0;
+}
+int enqueue()
+{
+    if(rear=size-1)
+    {
+        printf("Queue is Overflow!!!!");
+    }
+    else
+    {
+     int num;
+     printf("Enter number to entered in Queue-");
+     scanf("%d",&num);
+     rear++;
+     queue[rear]=num;
+     if(front==-1)
+     {
+         front=0;
+     }
+    }
+}
+int dequeue()
+{
+    int num;
+    if(front=-1)
+    {
+        printf("Queue is underflow!!!");
+    }
+    else
+    {
+        num=queue[front];
+        front++;
+        printf("Deleted item is-%d",num);
+    if(front>rear)
+    {
+        front=-1;
+        rear=-1;
+    }
+    }
+}
+int display()
+{
+    for(int i=front;i<=rear;i++)
+    {
+        printf("%d",queue[i]);
+    }
+}
+
+
+
+
