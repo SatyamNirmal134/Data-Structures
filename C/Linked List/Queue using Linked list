@@ -1,0 +1,115 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#define size 5
+
+// Define node structure
+typedef struct node
+{
+    int data;
+    struct node *next;
+} node;
+
+
+int main()
+{
+    node *start=NULL,*temp,*rn;
+    int c=0,ch,n;
+
+    for(;;)		// An infinite loop
+    {
+        system("cls");		// for clearing the screen
+        printf("1. Add\n");
+        printf("2. Delete\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+        printf("Enter Choice: ");
+        scanf("%d",&ch);
+
+        switch(ch)
+        {
+            case 1:
+                if(c==size)
+                {
+                    printf("Queue is full");
+                    getch();	// pause the loop to see the message
+                }
+                else
+                {
+                    printf("Enter a number ");
+                    scanf("%d",&n);
+
+                    //Create a new node
+                    temp=(node*)malloc(sizeof(node));
+                    temp->data=n;
+                    temp->next=NULL;
+
+                    if(start==NULL)
+                    {
+                        start=temp;
+                    }
+                    else
+                    {
+                        // insert the new node after the last node
+                        rn=start;	// recent node
+
+                        // find the last node in memory
+                        while(rn->next!=NULL)
+                        {
+                            rn=rn->next;	// move to the next node
+                        }
+                        rn->next=temp;	// last node
+                    }
+                    c++;
+                }
+                break;
+
+            case 2:
+                if(start==NULL)
+                {
+                    printf("Queue is empty");
+                    getch();	// pause the loop to see the message
+                }
+                else
+                {
+                    printf("Number Deleted = %d",start->data);
+                    temp=start;
+                    start=start->next;
+                    free(temp);
+                    c--;
+                    getch();	// pause the loop to see the number
+                }
+                break;
+
+            case 3:
+                if(start==NULL)
+                {
+                    printf("Queue is empty");
+                    getch();	// pause the loop to see the message
+                }
+                else
+                {
+                    temp=start;		// start from 1st node
+
+                    // display the nodes on the screen
+                    while(temp!=NULL)
+                    {
+                        printf("%d ",temp->data);
+                        temp=temp->next;
+                    }
+                    getch(); // pause the loop to see the nodes
+                }
+                break;
+
+            case 4:
+                exit(0);
+                break;
+
+            default:
+                printf("Wrong Choice");
+                getch();	// pause the loop to see the message
+        }
+    }
+    return 0;
+}
