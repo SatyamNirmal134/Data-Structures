@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include<stdlib.h>
+#define MAX 100
+int stack[100];
+int top=-1,x,d;
+int  push(int b)
+{
+     if(top>=(MAX-1))
+     {
+         printf("Stack is overflow!\n");
+     }
+     else
+     {
+          top++;
+         stack[top]=b;
+     }
+         
+}
+
+int pop()
+{
+    
+    if(top==-1)
+    {
+        printf("Stack if underflow!\n");
+        return 0;
+    }
+    else
+    {
+        d=stack[top];
+        top--;
+        return d;
+    }
+         
+}
+int decimal(int a)
+{
+    while(a!=0)
+    {
+        x=a%2;
+        push(x);
+        a=a/2;
+    }
+     printf("Binary Number  is ");
+    while(top!=-1)
+    {
+     
+     printf("%d",pop());   
+    }
+   
+}
+
+
+int main()
+{
+    int x;
+    printf("Enter the number");
+    scanf("%d",&x);
+    decimal(x);
+ 
+    return 0;
+}
+
+
