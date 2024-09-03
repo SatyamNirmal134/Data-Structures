@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int stack[50];
+char string[50];
+int top=-1;
+int push(int p)
+{
+    top++;
+    stack[top]=p;
+}
+int pop()
+{
+    top--;
+    return stack[top+1];
+}
+int eval(char b[])
+{
+    int z;
+    for(int i=0;i < strlen(b);i++)
+    {
+        int ch;
+        ch=b[i];
+        if(ch>='0'&&ch<='9' )
+        {
+            push(ch-'0');
+            
+        }
+       else if(ch=='+'|| ch=='-'|| ch=='*'|| ch=='/')
+        {
+            int b=pop();
+            int a=pop();
+            
+            switch(ch)
+            {
+              case '+':
+                       z=a+b;
+                       
+                       break;
+                       
+              case '-':
+                       z=a-b;
+                       
+                       break;
+                       
+              case '*':
+                       z=a*b;
+                       
+                       break;
+                       
+              case '/':
+                       z=a/b;
+                       
+                       break;
+            }
+            push(z);
+         
+        }
+    }
+    return pop();
+}
+int main()
+{
+    
+    printf("Enter a expression-");
+    scanf("%s",string);
+    int result=eval(string);
+    printf("Result is-%d",result);
+   
+    return 0;
+}
+
+
+
+
+
+
