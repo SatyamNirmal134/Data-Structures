@@ -1,0 +1,60 @@
+import java.util.*;
+public class GraphBFS
+{
+    int V;
+    LinkedList<Integer>[] adj;
+    GraphBFS(int v) 
+{
+        V = v;
+        adj = new LinkedList[v];
+        for (int i = 0; i < v; i++) {
+            adj[i] = new LinkedList<>();
+        }
+    }
+ public void addEdge(int V, int W)
+{
+        adj[V].add(W);
+    }
+public void BFS(int a)
+{
+        boolean[] vis = new boolean[V];
+        LinkedList<Integer> q = new LinkedList<>();
+        vis[a] = true;
+        q.add(a);
+ while (!q.isEmpty()) 
+{
+            int c = q.remove();
+            System.out.print(" "+c);
+for (int i = 0; i < adj[c].size(); i++) 
+{
+                int next = adj[c].get(i);
+                if (vis[next]==false)
+{
+                    vis[next] = true;
+                    q.add(next);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args)
+{
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of vertices:");
+        int V = sc.nextInt();
+        GraphBFS g = new GraphBFS(V);
+        System.out.println("Enter the number of edges:");
+        int d = sc.nextInt();
+    while (d != 0) 
+{
+            System.out.println("Enter the source vertex:");
+            int e = sc.nextInt();
+            System.out.println("Enter the destination vertex:");
+            int f = sc.nextInt();
+            g.addEdge(e, f);
+            d--;
+        }
+      System.out.println("BFS traversal starting from vertex 0:");
+        g.BFS(0);
+    }
+}
