@@ -1,0 +1,56 @@
+import java.util.Scanner;
+class heap
+{
+ static void buildHeap(int arr[],int N)
+{
+ int start=(N/2)-1;
+for(int i=start;i>=0;i--)
+{ 
+heapify(arr,N,i);
+}
+}
+static void heapify(int arr[],int N,int i)
+{
+int largest=i;
+int l=2*i+1;
+int r=2*i+2;
+if(l<N && arr[l]>arr[largest])
+{
+largest=l;
+}
+if(r<N && arr[r]>arr[largest])
+{
+largest=r;
+}
+if(largest!=i)
+{
+int temp=arr[i];
+arr[i]=arr[largest];
+arr[largest]=temp;
+heapify(arr,N,largest);
+}
+}
+static void printHeap(int arr[],int N)
+{
+System.out.println("Max Heap is-");
+
+for(int i=0;i<N;i++)
+{
+System.out.print(arr[i]+" ");
+}
+}
+public static void main(String []args)
+{
+ Scanner s=new Scanner(System.in);
+System.out.println("Enter the size of Heap");
+int N=s.nextInt();
+int[] arr=new int[N];
+for(int i=0;i<N;i++)
+{
+System.out.println("Enter the element");
+arr[i]=s.nextInt();
+}
+buildHeap(arr,N);
+printHeap(arr,N);
+}
+}
